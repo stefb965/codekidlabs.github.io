@@ -1,3 +1,14 @@
+/**
+ * @Author: codekid
+ * @Date:   2017-12-30T16:55:09+05:30
+ * @Filename: blog_basic.css
+ * @Last modified by:   codekid
+ * @Last modified time: 2018-01-25T08:24:11+05:30
+ * @Copyright: Ashish Shekar
+ */
+
+
+
 .post-content .tip {
   position: relative;
   margin: 2em 0;
@@ -21,7 +32,7 @@
   height: 20px;
   border-radius: 100%;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   font-weight: bold;
   text-align: center;
@@ -39,9 +50,9 @@
 }
 
 pre {
-  font-size: 0.8em!important;
+  font-size: 1.1em!important;
   background-color: #f8f8f8!important;
-  font-family: 'Roboto Mono','Lucida Console','Trebuchet MS','Courier New', Monaco, courier,'PingFang SC','Hiragino Sans GB','Microsoft Jhenghei','Microsoft YaHei', monospace!important
+  font-family: 'Source Code Pro', monospace;
 }
 
 figure.highlight {
