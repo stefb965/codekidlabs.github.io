@@ -1,15 +1,258 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ashish Shekar"><title>Pymongo - Save local time · Codekidlabs</title><meta name="description" content="Spent a while with this thing and came to know that even if you convertdatetime to your local timezone MongoDB converts it back to UTC while saving.
-H"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Codekidlabs</a></h3><div class="description"><p>Code Blog</p></div></div></div><ul class="social-links"><li><a href="http://github.com/codekidX"><i class="fa fa-github"></i></a></li><li><a href="http://plus.google.come/+AshishShekar"></a><i class="fa fa-google-plus-official"></i></li></ul><div class="footer"><a target="_blank" href="/"><span>Written by</span></a><a href="https://github.com/codekidX"> Ashish Shekar</a><span></span></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">Bites</a></li><li><a href="/archives">Archive</a></li><li><a href="/about">About</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"></a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Pymongo - Save local time</a></h3></div><div class="post-content"><p>Spent a while with this thing and came to know that even if you convert<br><code>datetime</code> to your local timezone MongoDB converts it back to UTC while saving.</p>
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Spent a while with this thing and came to know that even if you convertdatetime to your local timezone MongoDB converts it back to UTC while saving. How to convert to local timezone ?123456from dateti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pymongo - Save local time">
+<meta property="og:url" content="http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/index.html">
+<meta property="og:site_name" content="Codekidlabs">
+<meta property="og:description" content="Spent a while with this thing and came to know that even if you convertdatetime to your local timezone MongoDB converts it back to UTC while saving. How to convert to local timezone ?123456from dateti">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2018-01-25T03:28:30.201Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pymongo - Save local time">
+<meta name="twitter:description" content="Spent a while with this thing and came to know that even if you convertdatetime to your local timezone MongoDB converts it back to UTC while saving. How to convert to local timezone ?123456from dateti">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Pymongo - Save local time</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Bites</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="http://github.com/codekidX">Projects</a></li>
+         
+          <li><a href="/Search">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2017/12/30/storage-chooser-2.0/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&text=Pymongo - Save local time"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&is_video=false&description=Pymongo - Save local time"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Pymongo - Save local time&body=Check out this article: http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&name=Pymongo - Save local time&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-convert-to-local-timezone"><span class="toc-number">1.</span> <span class="toc-text">How to convert to local timezone ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-local-time-in-MongoDB"><span class="toc-number">2.</span> <span class="toc-text">Updating local time in MongoDB ?</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Pymongo - Save local time
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Codekidlabs</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-01-25T02:32:21.804Z" itemprop="datePublished">2018-01-25</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Spent a while with this thing and came to know that even if you convert<br><code>datetime</code> to your local timezone MongoDB converts it back to UTC while saving.</p>
 <h3 id="How-to-convert-to-local-timezone"><a href="#How-to-convert-to-local-timezone" class="headerlink" title="How to convert to local timezone ?"></a>How to convert to local timezone ?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> dateutil <span class="keyword">import</span> tz</span><br><span class="line"></span><br><span class="line">utctime = datetime.now()</span><br><span class="line">localtime = utctime.replace(tzinfo=tz.gettz(<span class="string">'UTC'</span>)).astimezone(tz.gettz(<span class="string">'Asia/Kolkata'</span>))</span><br></pre></td></tr></table></figure>
 <p>So, the only way that MongoDB would know that it is in the form of <strong>IST</strong> is by<br>timezone info inside <code>datetime</code> object.</p>
 <h3 id="Updating-local-time-in-MongoDB"><a href="#Updating-local-time-in-MongoDB" class="headerlink" title="Updating local time in MongoDB ?"></a>Updating local time in MongoDB ?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mongodb.chat.update(</span><br><span class="line">    &#123;<span class="string">'id'</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="string">"$set"</span>: &#123;<span class="string">'date'</span>: localtime.replace(tzinfo=<span class="keyword">None</span>)&#125;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>By removing timezone information from the <code>datetime</code> object <strong><em>(also known as naive datetime in python)</em></strong>, you are enforcing mongo by saying - <em>This is the UTC time</em></p>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-01-25</span><i class="fa fa-comment-o"></i><a href="/2018/01/25/save-naive-datetime-in-pymongo/#comments">Comments</a><i class="fa fa-tag"></i></div></div></div></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'codekidlabs-github-io';
-var disqus_identifier = '2018/01/25/save-naive-datetime-in-pymongo/';
-var disqus_title = 'Pymongo - Save local time';
-var disqus_url = 'http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/';
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Bites</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="http://github.com/codekidX">Projects</a></li>
+         
+          <li><a href="/Search">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-convert-to-local-timezone"><span class="toc-number">1.</span> <span class="toc-text">How to convert to local timezone ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-local-time-in-MongoDB"><span class="toc-number">2.</span> <span class="toc-text">Updating local time in MongoDB ?</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&text=Pymongo - Save local time"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&is_video=false&description=Pymongo - Save local time"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Pymongo - Save local time&body=Check out this article: http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&title=Pymongo - Save local time"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://codekidlabs.github.io/2018/01/25/save-naive-datetime-in-pymongo/&name=Pymongo - Save local time&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 Ashish Shekar
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Bites</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archive</a></li>
+         
+          <li><a href="http://github.com/codekidX">Projects</a></li>
+         
+          <li><a href="/Search">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'codekidlabs-github-io';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
