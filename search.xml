@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title><![CDATA[Fontio - The World of Fonts]]></title>
+      <url>/2018/02/17/fontio/</url>
+      <content type="html"><![CDATA[<h2 id="Fontio-Font-Configurator"><a href="#Fontio-Font-Configurator" class="headerlink" title="Fontio: Font Configurator"></a>Fontio: Font Configurator</h2><p>Font configurator is designed keeping extreme customizability in mind.<br>It gives you the full power to create your own font package depending on<br>your setup.</p>
+<h2 id="Step-1-Drag-and-drop"><a href="#Step-1-Drag-and-drop" class="headerlink" title="Step 1: Drag and drop"></a>Step 1: Drag and drop</h2><p>You can touch and hold on the font name to drag and drop it to<br>configurator.</p>
+<p><img src="fontio_step1.gif" alt="">  </p>
+<h2 id="Step-2-Select-variant"><a href="#Step-2-Select-variant" class="headerlink" title="Step 2: Select variant"></a>Step 2: Select variant</h2><p>Each font has it’s own list of variants. Variants are types of fonts<br>like <strong>BOLD, ITALIC, LIGHT</strong> etc.<br>After dragging and dropping a font you need to choose which variant of<br>the font you want to package.</p>
+<p><img src="fontio_step2.gif" alt="">  </p>
+<h2 id="Finally-PACKAGE"><a href="#Finally-PACKAGE" class="headerlink" title="Finally: PACKAGE"></a>Finally: PACKAGE</h2><p>You can access your configuration anytime you want by clicking the<br>concurrent circle icon at the top. You have to enter a font name <em>(it’s<br>your own creation be happy :winky_wink:)</em> and click on the package<br>button and choose your desired way of installation.</p>
+<p><img src="fontio_step3.gif" alt=""></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Pymongo - Save local time]]></title>
       <url>/2018/01/25/save-naive-datetime-in-pymongo/</url>
       <content type="html"><![CDATA[<p>Spent a while with this thing and came to know that even if you convert<br><code>datetime</code> to your local timezone MongoDB converts it back to UTC while saving.</p>
